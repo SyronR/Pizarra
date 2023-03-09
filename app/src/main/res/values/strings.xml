@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Pizarra</string>
+    <string name="login_start">Ingrese su correo electrónico y contraseña</string>
+    <string name="email">Correo electrónico:</string>
+    <string name="password">Contraseña:</string>
+    <string name="access">Acceder</string>
+    <string name="extra_logins">Otras formas de inicio de sesión</string>
+    <string name="google">Google</string>
+    <string name="new_account">¿No dispone de una cuenta? Creese una ahora</string>
+    <string name="register">Registrarse</string>
+    <string name="user_data">Ingrese sus datos</string>
+    <string name="user_name">Nombre completo:</string>
+    <string name="user_phone">Número de Telefono:</string>
+    <string name="repet_password">Repetir Contraseña:</string>
+</resources>
