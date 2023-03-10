@@ -1,11 +1,13 @@
 package com.galvezssr.pizarra.ui.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.galvezssr.pizarra.R
+import com.galvezssr.pizarra.TablesActivity
 import com.galvezssr.pizarra.databinding.LoginViewBinding
 import com.galvezssr.pizarra.kernel.showAlert
 import com.galvezssr.pizarra.kernel.showEmptySnackBar
@@ -36,7 +38,7 @@ class LoginFragment: Fragment(R.layout.login_view) {
         binding = LoginViewBinding.bind(view)
         app = (requireActivity() as AppCompatActivity)
 
-        /** Set the Listeners for the buttons **/
+        /** Set the listeners for the buttons **/
         binding.botonAcceder.setOnClickListener {
             loginWithApp(view)
         }
@@ -63,7 +65,7 @@ class LoginFragment: Fragment(R.layout.login_view) {
 
                 /** If the result has been successful... **/
                 if (it.isSuccessful)
-                    app.showAlert("Info", "Navegando hacia el tablon de tareas")
+                    navigateToTablesActivity()
                 else
                     app.showAlert("Error", "Los creedenciales son incorrectos, intentalo de nuevo")
             }
@@ -78,8 +80,14 @@ class LoginFragment: Fragment(R.layout.login_view) {
 
     private fun navigateToRegisterFragment() {
         findNavController().navigate(
-            R.id.login_view_to_register_view
+            R.id.action_loginView_to_registerView
         )
+    }
+
+    private fun navigateToTablesActivity() {
+        val intent = Intent(app, TablesActivity::class.java).apply {}
+
+        startActivity(intent)
     }
 
 }

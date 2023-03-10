@@ -6,7 +6,7 @@
     android:id="@+id/login_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/pizarra1">
+    android:background="@drawable/pizarra2">
 
     <TextView
         android:id="@+id/textView2"
