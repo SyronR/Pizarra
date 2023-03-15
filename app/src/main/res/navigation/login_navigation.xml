@@ -20,11 +20,9 @@
             app:popEnterAnim="@anim/slide_left_in"
             app:popExitAnim="@anim/slide_right_out" />
     </fragment>
-
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.galvezssr.pizarra.ui.login.RegisterFragment"
         android:label="RegisterFragment"
         tools:layout="@layout/register_view"/>
-
 </navigation>

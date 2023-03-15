@@ -13,4 +13,8 @@
     <string name="user_phone">Número de Telefono:</string>
     <string name="repet_password">Repetir Contraseña:</string>
     <string name="todo">TODO</string>
+    <string name="create_table_string">Añade un nombre para identificar la tabla</string>
+    <string name="name">Nombre:</string>
+    <string name="create_table">Crear tabla</string>
+    <string name="pizarra_info">Info: en este modelo, cuando creamos una tabla, podremos luego acceder a esta misma para crear multiples tareas que se guardaran en base al nombre de la tabla, asi que es importante poner nombres simples y que se entiendan facilmente</string>
 </resources>
