@@ -15,6 +15,7 @@
             android:name=".LoginActivity"
             android:exported="true"
             android:theme="@style/Theme.Pizarra.NoActionBar">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,6 +26,12 @@
             android:name=".TablesActivity"
             android:exported="true"
             android:theme="@style/Theme.Pizarra.NoActionBar">
+
+        </activity>
+        <activity android:name=".TasksActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Pizarra.NoActionBar">
+
         </activity>
     </application>
 

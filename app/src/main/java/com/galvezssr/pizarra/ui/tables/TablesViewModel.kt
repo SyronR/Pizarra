@@ -1,4 +1,4 @@
-package com.galvezssr.pizarra.ui.main
+package com.galvezssr.pizarra.ui.tables
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -39,3 +39,4 @@ class TablesViewModel: ViewModel() {
 
     }
 }
+

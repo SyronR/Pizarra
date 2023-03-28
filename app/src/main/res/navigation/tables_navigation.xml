@@ -9,7 +9,7 @@
 
     <fragment
         android:id="@+id/tablesFragment"
-        android:name="com.galvezssr.pizarra.ui.main.TablesFragment"
+        android:name="com.galvezssr.pizarra.ui.tables.TablesFragment"
         android:label="TablesFragment"
         tools:layout="@layout/tables_view">
         <action
@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/createTableFragment"
-        android:name="com.galvezssr.pizarra.ui.main.CreateTableFragment"
+        android:name="com.galvezssr.pizarra.ui.tables.CreateTableFragment"
         android:label="CreateTableFragment"
         tools:layout="@layout/create_table_view"/>
 </navigation>

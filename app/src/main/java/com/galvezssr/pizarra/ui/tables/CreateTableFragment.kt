@@ -1,4 +1,4 @@
-package com.galvezssr.pizarra.ui.main
+package com.galvezssr.pizarra.ui.tables
 
 import android.os.Bundle
 import android.view.View

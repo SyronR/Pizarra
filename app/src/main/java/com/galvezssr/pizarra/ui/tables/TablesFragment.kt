@@ -1,6 +1,7 @@
-package com.galvezssr.pizarra.ui.main
+package com.galvezssr.pizarra.ui.tables
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -11,10 +12,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.galvezssr.pizarra.R
+import com.galvezssr.pizarra.TasksActivity
 import com.galvezssr.pizarra.databinding.TablesViewBinding
 import com.galvezssr.pizarra.kernel.Table
 import com.galvezssr.pizarra.kernel.TablesAdapter
-import com.galvezssr.pizarra.kernel.showAlert
 import kotlinx.coroutines.launch
 
 class TablesFragment: Fragment(R.layout.tables_view) {
@@ -43,7 +44,6 @@ class TablesFragment: Fragment(R.layout.tables_view) {
 
         adapter = TablesAdapter { table -> navigateToTasksActivity(table) }
         binding.tableRecycler.adapter = adapter
-
 
         /** Set the listener for the button **/
         binding.floatingActionButton.setOnClickListener {
@@ -85,7 +85,11 @@ class TablesFragment: Fragment(R.layout.tables_view) {
     }
 
     private fun navigateToTasksActivity(table: Table) {
-        app.showAlert("Info", "Navegando hacia las tareas desde la tabla ${table.name}")
+        val intent = Intent(app, TasksActivity::class.java).apply {
+            putExtra("tableName", table.name)
+        }
+
+        startActivity(intent)
     }
 
 }
