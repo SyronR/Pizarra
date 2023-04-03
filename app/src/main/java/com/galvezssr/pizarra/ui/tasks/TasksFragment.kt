@@ -1,5 +1,6 @@
 package com.galvezssr.pizarra.ui.tasks
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -55,9 +56,9 @@ class TasksFragment: Fragment(R.layout.tasks_view) {
     }
 
     private fun navigateToDetailTaskFragment() {
-        findNavController().navigate(
-            R.id.action_tasksFragment_to_detailTaskFragment
-        )
+        val intent = Intent(app, DetailTaskActivity::class.java).apply {}
+
+        startActivity(intent)
     }
 
 }

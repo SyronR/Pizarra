@@ -33,6 +33,11 @@
             android:theme="@style/Theme.Pizarra.NoActionBar">
 
         </activity>
+        <activity android:name=".ui.tasks.DetailTaskActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Pizarra.NoActionBar">
+
+        </activity>
     </application>
 
 </manifest>

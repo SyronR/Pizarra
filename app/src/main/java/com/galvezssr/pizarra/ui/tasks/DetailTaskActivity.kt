@@ -1,9 +1,10 @@
 package com.galvezssr.pizarra.ui.tasks
 
-import androidx.fragment.app.Fragment
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.galvezssr.pizarra.R
 
-class DetailTaskFragment: Fragment(R.layout.detail_task_view) {
+class DetailTaskActivity: AppCompatActivity() {
 
     ////////////////////////////////////////////////////
     // VARIABLES ///////////////////////////////////////
@@ -12,5 +13,10 @@ class DetailTaskFragment: Fragment(R.layout.detail_task_view) {
     ////////////////////////////////////////////////////
     // FUNCTIONS ///////////////////////////////////////
     ////////////////////////////////////////////////////
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.detail_task_view)
+    }
 
 }

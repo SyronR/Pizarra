@@ -9,7 +9,6 @@ import com.galvezssr.pizarra.databinding.RegisterViewBinding
 import com.galvezssr.pizarra.kernel.*
 import com.google.firebase.auth.FirebaseAuth
 
-@Suppress("DEPRECATION")
 class RegisterFragment: Fragment(R.layout.register_view) {
 
     ////////////////////////////////////////////////////
@@ -68,7 +67,6 @@ class RegisterFragment: Fragment(R.layout.register_view) {
                     /** If the result has been successful... **/
                     if (it.isSuccessful) {
                         FirebaseFirestore.createUser(user, app)
-                        navigateToLoginView()
 
                     } else {
                         app.showAlert("Error", "Ya existe un usuario con el mismo email")
@@ -81,10 +79,4 @@ class RegisterFragment: Fragment(R.layout.register_view) {
         } else
             view.showEmptySnackBar()
     }
-
-    /** I simulate pressing back, forcing the system to return to the previous fragment **/
-    private fun navigateToLoginView() {
-        app.onBackPressed()
-    }
-
 }
