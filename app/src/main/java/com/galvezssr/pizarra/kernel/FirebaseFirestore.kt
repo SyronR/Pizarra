@@ -38,6 +38,15 @@ object FirebaseFirestore {
             }
     }
 
+    fun getTasksFromTable(table: Table): Flow<List<Task>> {
+        return FirebaseFirestore.getInstance().collection(USER_COLECCTION)
+            .document(getCurrentUser()).collection(TABLES_COLECCTION)
+            .document(table.name).collection(TASKS_COLECCTION)
+            .orderBy("priority", Query.Direction.DESCENDING).snapshots().map {
+                it.toObjects(Task::class.java)
+            }
+    }
+
     // CREATE
     fun createUser(user: User, app: AppCompatActivity) {
         val ddbb = getDDBB()

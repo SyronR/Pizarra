@@ -1,4 +1,4 @@
-package com.galvezssr.pizarra.kernel
+package com.galvezssr.pizarra.kernel.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.galvezssr.pizarra.R
+import com.galvezssr.pizarra.kernel.Table
 
 class TablesAdapter(val listener: (Table) -> Unit): RecyclerView.Adapter<TablesAdapter.ViewHolder>() {
 

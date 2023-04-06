@@ -15,7 +15,7 @@ import com.galvezssr.pizarra.R
 import com.galvezssr.pizarra.TasksActivity
 import com.galvezssr.pizarra.databinding.TablesViewBinding
 import com.galvezssr.pizarra.kernel.Table
-import com.galvezssr.pizarra.kernel.TablesAdapter
+import com.galvezssr.pizarra.kernel.adapters.TablesAdapter
 import kotlinx.coroutines.launch
 
 class TablesFragment: Fragment(R.layout.tables_view) {
@@ -24,7 +24,6 @@ class TablesFragment: Fragment(R.layout.tables_view) {
     // VARIABLES ///////////////////////////////////////
     ////////////////////////////////////////////////////
 
-    private val viewModel: TablesViewModel by viewModels()
     private lateinit var adapter: TablesAdapter
 
     private lateinit var binding: TablesViewBinding
@@ -41,6 +40,7 @@ class TablesFragment: Fragment(R.layout.tables_view) {
         /** Initialize the variables **/
         binding = TablesViewBinding.bind(view)
         app = (requireActivity() as AppCompatActivity)
+        val viewModel: TablesViewModel by viewModels()
 
         adapter = TablesAdapter { table -> navigateToTasksActivity(table) }
         binding.tableRecycler.adapter = adapter
@@ -53,7 +53,7 @@ class TablesFragment: Fragment(R.layout.tables_view) {
         /** Set the recycler **/
 
         // Observe the progress bar to modify it in the XML
-        viewModel.progressBar.observe(viewLifecycleOwner) {loading ->
+        viewModel.progressBar.observe(viewLifecycleOwner) { loading ->
             if (loading) {
                 binding.progressBar.visibility = View.VISIBLE
             } else {

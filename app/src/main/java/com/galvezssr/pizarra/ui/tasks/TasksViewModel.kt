@@ -1,17 +1,26 @@
 package com.galvezssr.pizarra.ui.tasks
 
 import androidx.lifecycle.*
+import com.galvezssr.pizarra.kernel.FirebaseFirestore
+import com.galvezssr.pizarra.kernel.Table
+import com.galvezssr.pizarra.kernel.Task
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
 class TasksViewModel(private val tableName: String): ViewModel() {
 
-    private val _text = MutableLiveData<String>()
-    val text: LiveData<String> = _text
+    private val _progressBar = MutableLiveData<Boolean>()
+    val progressBar: LiveData<Boolean> = _progressBar
+
+    private val _tasksList = MutableLiveData<Flow<List<Task>>>()
+    val tasksList: LiveData<Flow<List<Task>>> = _tasksList
 
     init {
 
         viewModelScope.launch {
-            _text.postValue("Vista de tareas ($tableName)")
+            _progressBar.postValue(true)
+            _tasksList.postValue(FirebaseFirestore.getTasksFromTable( Table(tableName) ))
+            _progressBar.postValue(false)
         }
 
     }

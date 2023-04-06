@@ -17,7 +17,7 @@ class CreateTaskFragment: Fragment(R.layout.create_task_view) {
     ////////////////////////////////////////////////////
 
     private var date = "null"
-    private var priority = "low"
+    private var priority = "1"
 
     private lateinit var task: Task
     private lateinit var table: Table
@@ -43,13 +43,13 @@ class CreateTaskFragment: Fragment(R.layout.create_task_view) {
         binding.radioGroup.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
                 R.id.radio_button_low -> {
-                    priority = "low"
+                    priority = "1"
                 }
                 R.id.radio_button_medium -> {
-                    priority = "medium"
+                    priority = "2"
                 }
                 R.id.radio_button_high -> {
-                    priority = "high"
+                    priority = "3"
                 }
             }
         }

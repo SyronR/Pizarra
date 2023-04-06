@@ -1,8 +1,7 @@
-package com.galvezssr.pizarra.ui.tasks
+package com.galvezssr.pizarra
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.galvezssr.pizarra.R
 
 class DetailTaskActivity: AppCompatActivity() {
 
