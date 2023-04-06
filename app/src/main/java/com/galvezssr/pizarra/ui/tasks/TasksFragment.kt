@@ -94,7 +94,6 @@ class TasksFragment: Fragment(R.layout.tasks_view) {
 //        }
 //
 //        startActivity(intent)
-
         app.showAlert("Info", "Navegando hacia el detalle de la tarea ${task.name}")
     }
 
