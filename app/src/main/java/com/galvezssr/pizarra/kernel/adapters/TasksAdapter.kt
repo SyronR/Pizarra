@@ -36,18 +36,21 @@ class TasksAdapter(val listener: (Task) -> Unit): RecyclerView.Adapter<TasksAdap
         holder.name.text = task.name
 
         /** Set the image color based on the priority **/
-        if (task.priority == "3") {
-            holder.image.setBackgroundResource(R.drawable.rounded_mini)
-            holder.image.setImageResource(R.drawable.red)
+//        if (task.priority == "3") {
+//            holder.image.setImageResource(R.drawable.red)
+//
+//        } else if (task.priority == "2") {
+//            holder.image.setImageResource(R.drawable.yellow)
+//
+//        } else {
+//            holder.image.setImageResource(R.drawable.green)
+//
+//        }
 
-        } else if (task.priority == "2") {
-            holder.image.setBackgroundResource(R.drawable.rounded_mini)
-            holder.image.setImageResource(R.drawable.yellow)
-
-        } else {
-            holder.image.setBackgroundResource(R.drawable.rounded_mini)
-            holder.image.setImageResource(R.drawable.green)
-
+        when (task.priority) {
+            "3" -> holder.image.setImageResource(R.drawable.red)
+            "2" -> holder.image.setImageResource(R.drawable.yellow)
+            else -> holder.image.setImageResource(R.drawable.green)
         }
 
         holder.itemView.setOnClickListener {

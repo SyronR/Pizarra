@@ -15,7 +15,7 @@ class DetailTaskActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.detail_task_view)
+        setContentView(R.layout.detail_task_activity)
     }
 
 }

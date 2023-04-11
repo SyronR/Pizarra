@@ -1,6 +1,7 @@
 package com.galvezssr.pizarra.ui.tasks
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -10,11 +11,11 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import com.galvezssr.pizarra.DetailTaskActivity
 import com.galvezssr.pizarra.R
 import com.galvezssr.pizarra.databinding.TasksViewBinding
 import com.galvezssr.pizarra.kernel.Task
 import com.galvezssr.pizarra.kernel.adapters.TasksAdapter
-import com.galvezssr.pizarra.kernel.showAlert
 import kotlinx.coroutines.launch
 
 class TasksFragment: Fragment(R.layout.tasks_view) {
@@ -86,15 +87,15 @@ class TasksFragment: Fragment(R.layout.tasks_view) {
     }
 
     private fun navigateToDetailTaskActivity(task: Task) {
-//        val intent = Intent(app, DetailTaskActivity::class.java).apply {
-//            putExtra("taskName", task.name)
-//            putExtra("taskDescription", task.description)
-//            putExtra("taskPriority", task.priority)
-//            putExtra("taskDate", task.date)
-//        }
-//
-//        startActivity(intent)
-        app.showAlert("Info", "Navegando hacia el detalle de la tarea ${task.name}")
+        val intent = Intent(app, DetailTaskActivity::class.java).apply {
+            putExtra("taskName", task.name)
+            putExtra("taskDescription", task.description)
+            putExtra("taskPriority", task.priority)
+            putExtra("taskDate", task.date)
+        }
+
+        startActivity(intent)
+//        app.showAlert("Info", "Navegando hacia el detalle de la tarea ${task.name}")
     }
 
 }

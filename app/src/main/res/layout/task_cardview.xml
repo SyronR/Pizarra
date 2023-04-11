@@ -39,12 +39,13 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@mipmap/ic_pizarra"
                 tools:targetApi="s" />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="5sp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="7sp"
                 android:layout_toEndOf="@+id/imageView">
 
                 <TextView

@@ -15,18 +15,25 @@
     <string name="todo">TODO</string>
     <string name="create_table_string">Añade un nombre para identificar la tabla</string>
     <string name="name">Nombre:</string>
+    <string name="detail_name">- NOMBRE:</string>
     <string name="create_table">Crear tabla</string>
     <string name="pizarra_info">Info: en este modelo, cuando creamos una tabla, podremos luego acceder a esta misma para crear multiples tareas que se guardaran en base al nombre de la tabla, asi que es importante poner nombres simples y que se entiendan facilmente</string>
     <string name="task_view">Vista de tareas</string>
     <string name="task_view_create">Vista de tareas (crear)</string>
     <string name="task_view_detail">Vista de tareas (detalle)</string>
     <string name="description">Descripción:</string>
+    <string name="detail_description">- DESCRIPCIÓN:</string>
     <string name="create_task">Introduzca datos para crear una tarea</string>
-    <string name="priority">Seleccione la prioridad</string>
+    <string name="priority">Prioridad:</string>
+    <string name="detail_priority">- PRIORIDAD:</string>
+    <string name="select_priority">Seleccione la prioridad</string>
     <string name="low">Baja</string>
     <string name="medium">Media</string>
     <string name="high">Alta</string>
     <string name="create">Crear</string>
     <string name="limit_date">Seleccione la fecha de finalización</string>
+    <string name="detail_date">- FECHA LIMITE:</string>
     <string name="select_date">Seleccione una fecha</string>
+    <string name="detail_menu_1">Mover a otra tabla</string>
+    <string name="detail_menu_2">Modificar</string>
 </resources>

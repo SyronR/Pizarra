@@ -9,12 +9,19 @@ import kotlinx.coroutines.launch
 
 class TasksViewModel(private val tableName: String): ViewModel() {
 
+    ////////////////////////////////////////////////////
+    // VARIABLES ///////////////////////////////////////
+    ////////////////////////////////////////////////////
+
     private val _progressBar = MutableLiveData<Boolean>()
     val progressBar: LiveData<Boolean> = _progressBar
 
     private val _tasksList = MutableLiveData<Flow<List<Task>>>()
     val tasksList: LiveData<Flow<List<Task>>> = _tasksList
 
+    ////////////////////////////////////////////////////
+    // FUNCTIONS ///////////////////////////////////////
+    ////////////////////////////////////////////////////
     init {
 
         viewModelScope.launch {
