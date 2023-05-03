@@ -1,7 +1,9 @@
 
 package com.galvezssr.pizarra.kernel
 
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
@@ -108,6 +110,41 @@ object FirebaseFirestore {
                     app.showAlert("Error", "No se ha podido crear la tarea")
 
         }
+    }
+
+    // DELETE
+
+    fun deleteTable(table: Table, view: View) {
+        val ddbb = getDDBB()
+        val currentUser = getCurrentUser()
+
+        /** Delete the table and displays a snackbar **/
+        ddbb.collection(USER_COLECCTION).document(currentUser).collection(TABLES_COLECCTION).document(table.name).delete()
+        view.showSnackBar("Tabla borrada correctamente")
+    }
+
+    fun deleteTaskFromTable(task: Task, table: Table, view: View) {
+        val ddbb = getDDBB()
+        val currentUser = getCurrentUser()
+        val taskMap = hashMapOf(
+            "name" to task.name,
+            "description" to task.description,
+            "priority" to task.priority,
+            "date" to task.date
+        )
+
+        /** Delete the task from the table, and displays a snackbar with an action that allows you to undo the deletion **/
+        ddbb.collection(USER_COLECCTION).document(currentUser).collection(TABLES_COLECCTION).document(table.name).collection(
+            TASKS_COLECCTION).document(task.name).delete()
+
+        // Make a snackbar with the action
+        Snackbar.make(view, "Tarea borrada correctamente", Snackbar.LENGTH_LONG).apply { setAction("Deshacer") {
+
+            ddbb.collection(USER_COLECCTION).document(currentUser).collection(TABLES_COLECCTION).document(table.name).collection(
+                TASKS_COLECCTION).document(task.name).set(taskMap)
+
+         }}.show()
+
     }
 
     private fun forceBack(app: AppCompatActivity) {

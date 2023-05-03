@@ -36,4 +36,5 @@
     <string name="select_date">Seleccione una fecha</string>
     <string name="detail_menu_1">Mover a otra tabla</string>
     <string name="detail_menu_2">Modificar</string>
+    <string name="done">DONE</string>
 </resources>

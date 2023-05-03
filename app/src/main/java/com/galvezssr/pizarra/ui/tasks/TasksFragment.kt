@@ -11,9 +11,13 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.galvezssr.pizarra.DetailTaskActivity
 import com.galvezssr.pizarra.R
 import com.galvezssr.pizarra.databinding.TasksViewBinding
+import com.galvezssr.pizarra.kernel.FirebaseFirestore
+import com.galvezssr.pizarra.kernel.Table
 import com.galvezssr.pizarra.kernel.Task
 import com.galvezssr.pizarra.kernel.adapters.TasksAdapter
 import kotlinx.coroutines.launch
@@ -78,7 +82,32 @@ class TasksFragment: Fragment(R.layout.tasks_view) {
             }
 
         }
+
+        /** Swipe to delete **/
+        swipeToDelete(view)
     }
+
+
+    /** Now implementing the function that will take care of swiping to delete **/
+    private fun swipeToDelete(view: View) {
+        ItemTouchHelper(object: ItemTouchHelper.SimpleCallback(
+            ItemTouchHelper.UP or ItemTouchHelper.DOWN,
+            ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
+        ) {
+            override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
+                return true
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.adapterPosition
+                val task = adapter.tasks[position]
+
+                FirebaseFirestore.deleteTaskFromTable(task, Table(tableName), view)
+            }
+
+        }).attachToRecyclerView(binding.tasksRecycler)
+    }
+
 
     private fun navigateToCreateTaskFragment() {
         findNavController().navigate(
@@ -95,7 +124,6 @@ class TasksFragment: Fragment(R.layout.tasks_view) {
         }
 
         startActivity(intent)
-//        app.showAlert("Info", "Navegando hacia el detalle de la tarea ${task.name}")
     }
 
 }
