@@ -117,6 +117,7 @@ class TasksFragment: Fragment(R.layout.tasks_view) {
 
     private fun navigateToDetailTaskActivity(task: Task) {
         val intent = Intent(app, DetailTaskActivity::class.java).apply {
+            putExtra("tableName", tableName)
             putExtra("taskName", task.name)
             putExtra("taskDescription", task.description)
             putExtra("taskPriority", task.priority)

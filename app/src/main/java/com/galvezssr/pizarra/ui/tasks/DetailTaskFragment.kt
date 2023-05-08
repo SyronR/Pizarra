@@ -11,6 +11,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.galvezssr.pizarra.R
 import com.galvezssr.pizarra.databinding.DetailTaskViewBinding
 import com.galvezssr.pizarra.kernel.Task
@@ -21,6 +22,8 @@ class DetailTaskFragment: Fragment(R.layout.detail_task_view) {
     ////////////////////////////////////////////////////
     // VARIABLES ///////////////////////////////////////
     ////////////////////////////////////////////////////
+
+    private lateinit var tableName: String
 
     private lateinit var task: Task
 
@@ -38,6 +41,7 @@ class DetailTaskFragment: Fragment(R.layout.detail_task_view) {
         /** Initialize the variables **/
         binding = DetailTaskViewBinding.bind(view)
         app = (requireActivity() as AppCompatActivity)
+        tableName = app.intent.extras!!.getString("tableName").toString()
         task = Task(
             app.intent.extras!!.getString("taskName").toString(),
             app.intent.extras!!.getString("taskDescription").toString(),
@@ -50,7 +54,6 @@ class DetailTaskFragment: Fragment(R.layout.detail_task_view) {
         setHasOptionsMenu(true)
 
         val viewModel: DetailTaskViewModel by viewModels { DetailTaskViewModelFactory(task) }
-
 
         /** Set the data in the XML **/
         viewModel.dataTask.observe(viewLifecycleOwner) {
@@ -95,12 +98,26 @@ class DetailTaskFragment: Fragment(R.layout.detail_task_view) {
                 return true
             }
             R.id.action_modify -> {
-                app.showAlert("Info", "Disponible proximamente. Mientras tanto, edite desde el menu de crear")
+                navigateToEditTaskFragment()
                 return true
             }
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun navigateToEditTaskFragment() {
+        val bundle = Bundle().apply {
+            putString("tableName", tableName)
+            putString("taskName", task.name)
+            putString("taskDescription", task.description)
+            putString("taskPriority", task.priority)
+            putString("taskDate", task.date)
+        }
+
+        findNavController().navigate(
+            R.id.action_detailTaskFragment_to_editTaskFragment, bundle
+        )
     }
 
 }

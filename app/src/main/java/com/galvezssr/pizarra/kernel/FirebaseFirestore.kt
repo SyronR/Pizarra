@@ -112,6 +112,30 @@ object FirebaseFirestore {
         }
     }
 
+    // EDIT
+
+    fun editTask(task: Task, table: Table, app: AppCompatActivity) {
+        val ddbb = getDDBB()
+        val currentUser = getCurrentUser()
+        val taskMap = hashMapOf(
+            "name" to task.name,
+            "description" to task.description,
+            "priority" to task.priority,
+            "date" to task.date
+        )
+
+        ddbb.collection(USER_COLECCTION).document(currentUser).collection(TABLES_COLECCTION).document(table.name).collection(
+            TASKS_COLECCTION).document(task.name).set(taskMap).addOnCompleteListener {
+
+            if (it.isSuccessful) {
+                app.showAlert("Info", "Tarea modificada correctamente")
+                forceBack(app)
+            } else
+                app.showAlert("Error", "No se ha podido modificar la tarea")
+
+        }
+    }
+
     // DELETE
 
     fun deleteTable(table: Table, view: View) {

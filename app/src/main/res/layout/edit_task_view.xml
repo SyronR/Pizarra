@@ -4,18 +4,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
 
-    android:id="@+id/create_task_view"
+    android:id="@+id/edit_task_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/pizarra2">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="100dp"
         android:gravity="center"
-        android:text="@string/create_task"
+        android:text="@string/edit_task"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textSize="18sp"
@@ -24,26 +35,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/fieldName"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/name"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <EditText
         android:id="@+id/fieldDescription"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:autofillHints=""
         android:ems="10"
         android:gravity="top|start"
@@ -54,13 +49,13 @@
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fieldName" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="36dp"
         android:gravity="center"
         android:text="@string/select_priority"
         android:textColor="@color/white"
@@ -87,8 +82,7 @@
             android:layout_marginEnd="16dp"
             android:text="@string/low"
             android:textColor="@color/white"
-            android:textSize="18sp"
-            android:checked="true"/>
+            android:textSize="18sp"/>
 
         <RadioButton
             android:id="@+id/radio_button_medium"
@@ -115,7 +109,7 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="36dp"
         android:gravity="center"
         android:text="@string/limit_date"
         android:textColor="@color/white"
@@ -144,15 +138,28 @@
         tools:ignore="TextFields" />
 
     <Button
-        android:id="@+id/createButton"
-        android:layout_width="300dp"
+        android:id="@+id/saveButton"
+        android:layout_width="115dp"
         android:layout_height="55dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="32dp"
         android:backgroundTint="@color/black"
+        android:text="@string/save"
         android:textColor="@color/white"
-        android:text="@string/create"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="115dp"
+        android:layout_height="55dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/light_white"
+        android:text="@string/cancel"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/saveButton" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

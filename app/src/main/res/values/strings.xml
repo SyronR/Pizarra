@@ -37,4 +37,7 @@
     <string name="detail_menu_1">Mover a otra tabla</string>
     <string name="detail_menu_2">Modificar</string>
     <string name="done">DONE</string>
+    <string name="edit_task">Inserte los nuevos datos</string>
+    <string name="save">Guardar</string>
+    <string name="cancel">Cancelar</string>
 </resources>
