@@ -51,7 +51,7 @@ class EditTaskFragment: Fragment(R.layout.edit_task_view) {
             bundle?.getString("taskDate").toString()
         )
         // Creating the new toolbar
-        binding.toolbar.title = "Tarea: ${task.name}"
+        binding.toolbar.title = task.name
         app.setSupportActionBar(binding.toolbar)
 
         val viewModel: EditTaskViewModel by viewModels { EditTaskViewModelFactory(task) }
@@ -116,7 +116,9 @@ class EditTaskFragment: Fragment(R.layout.edit_task_view) {
     }
 
     private fun onDateSelected(day: Int, month: Int, year: Int) {
-        date = "$day-$month-$year"
+        val fixedMonth = month + 1
+
+        date = "$day-$fixedMonth-$year"
         binding.fieldDate.setText(date)
     }
 

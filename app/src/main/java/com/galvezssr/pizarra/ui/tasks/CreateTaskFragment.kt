@@ -6,9 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.galvezssr.pizarra.R
 import com.galvezssr.pizarra.databinding.CreateTaskViewBinding
-import com.galvezssr.pizarra.kernel.FirebaseFirestore
-import com.galvezssr.pizarra.kernel.Table
-import com.galvezssr.pizarra.kernel.Task
+import com.galvezssr.pizarra.kernel.*
 
 class CreateTaskFragment: Fragment(R.layout.create_task_view) {
 
@@ -61,15 +59,23 @@ class CreateTaskFragment: Fragment(R.layout.create_task_view) {
         }
 
         binding.createButton.setOnClickListener {
-            task = Task(binding.fieldName.text.toString(), binding.fieldDescription.text.toString(), priority, date)
-            table = Table(tableName)
 
-            FirebaseFirestore.createTask(task, table, app)
+            if (binding.fieldName.text.isNotEmpty()) {
+                task = Task(binding.fieldName.text.toString(), binding.fieldDescription.text.toString(), priority, date)
+                table = Table(tableName)
+
+                FirebaseFirestore.createTask(task, table, app)
+
+            } else
+                view.showSnackBar("Una tarea no puede no tener nombre")
+
         }
     }
 
     private fun onDateSelected(day: Int, month: Int, year: Int) {
-        date = "$day-$month-$year"
+        val fixedMonth = month + 1
+
+        date = "$day-$fixedMonth-$year"
         binding.fieldDate.setText(date)
     }
 }

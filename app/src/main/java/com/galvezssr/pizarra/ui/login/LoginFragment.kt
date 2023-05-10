@@ -1,6 +1,8 @@
 package com.galvezssr.pizarra.ui.login
 
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +13,7 @@ import com.galvezssr.pizarra.TablesActivity
 import com.galvezssr.pizarra.databinding.LoginViewBinding
 import com.galvezssr.pizarra.kernel.showAlert
 import com.galvezssr.pizarra.kernel.showEmptySnackBar
+import com.galvezssr.pizarra.kernel.showToast
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginFragment: Fragment(R.layout.login_view) {
@@ -38,19 +41,32 @@ class LoginFragment: Fragment(R.layout.login_view) {
         binding = LoginViewBinding.bind(view)
         app = (requireActivity() as AppCompatActivity)
 
+        /** Check for internet connexion **/
+        if (!isOnline(app)) {
+            app.showToast("Sin conexión a internet")
+        }
+
         /** Set the listeners for the buttons **/
         binding.botonAcceder.setOnClickListener {
             loginWithApp(view)
         }
 
-        binding.botonGoogle.setOnClickListener {
-            loginWithGoogle()
-        }
+//        binding.botonGoogle.setOnClickListener {
+//            loginWithGoogle()
+//        }
 
         binding.botonRegistrar.setOnClickListener {
             navigateToRegisterFragment()
         }
 
+    }
+
+    @Suppress("DEPRECATION")
+    private fun isOnline(app: Context): Boolean {
+        val connectivityManager = app.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val networkInfo = connectivityManager.activeNetworkInfo
+
+        return networkInfo != null && networkInfo.isConnected
     }
 
     private fun loginWithApp(view: View) {
@@ -67,16 +83,16 @@ class LoginFragment: Fragment(R.layout.login_view) {
                 if (it.isSuccessful)
                     navigateToTablesActivity()
                 else
-                    app.showAlert("Error", "Los creedenciales son incorrectos, intentalo de nuevo")
+                    app.showAlert("Error", "No se ha podido iniciar sesión")
             }
 
         } else
             view.showEmptySnackBar()
     }
 
-    private fun loginWithGoogle() {
-        app.showAlert("Info", "Disponible proximamente")
-    }
+//    private fun loginWithGoogle() {
+//        app.showAlert("Info", "Disponible proximamente")
+//    }
 
     private fun navigateToRegisterFragment() {
         findNavController().navigate(

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
@@ -10,10 +11,12 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.Pizarra"
-        tools:targetApi="31">
+        tools:targetApi="s">
         <activity
             android:name=".LoginActivity"
             android:exported="true"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:theme="@style/Theme.Pizarra.NoActionBar">
 
             <intent-filter>
@@ -25,16 +28,25 @@
         <activity
             android:name=".TablesActivity"
             android:exported="true"
-            android:theme="@style/Theme.Pizarra.NoActionBar">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Pizarra.NoActionBar"
+            tools:ignore="LockedOrientationActivity">
 
         </activity>
-        <activity android:name=".TasksActivity"
+        <activity
+            android:name=".TasksActivity"
             android:exported="true"
-            android:theme="@style/Theme.Pizarra.NoActionBar">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"
+            android:theme="@style/Theme.Pizarra.NoActionBar"
+            tools:ignore="LockedOrientationActivity">
 
         </activity>
-        <activity android:name=".DetailTaskActivity"
+        <activity
+            android:name=".DetailTaskActivity"
             android:exported="true"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:theme="@style/Theme.Pizarra.NoActionBar">
 
         </activity>

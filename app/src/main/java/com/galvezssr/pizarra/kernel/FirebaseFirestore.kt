@@ -31,8 +31,22 @@ object FirebaseFirestore {
 
     private fun getCurrentUser(): String = Firebase.auth.currentUser?.email!!
 
-    /** Get all tables from the current user **/
-    fun getTables(): Flow<List<Table>> {
+//    /** Get all tables from the current user **/
+//    fun getTables(): List<Table> {
+//        val tableList = mutableListOf<Table>()
+//
+//        FirebaseFirestore.getInstance().collection(USER_COLECCTION).document(getCurrentUser()).collection(
+//            TABLES_COLECCTION).get().addOnSuccessListener {
+//                for (document in it) {
+//                    val table = document.toObject(Table::class.java)
+//                    tableList.add(table)
+//                }
+//        }
+//
+//        return tableList
+//    }
+
+    fun getTablesFlow(): Flow<List<Table>> {
         return FirebaseFirestore.getInstance().collection(USER_COLECCTION)
             .document(getCurrentUser()).collection(TABLES_COLECCTION)
             .orderBy("name", Query.Direction.DESCENDING).snapshots().map {
@@ -40,7 +54,7 @@ object FirebaseFirestore {
             }
     }
 
-    fun getTasksFromTable(table: Table): Flow<List<Task>> {
+    fun getTasksFromTableFlow(table: Table): Flow<List<Task>> {
         return FirebaseFirestore.getInstance().collection(USER_COLECCTION)
             .document(getCurrentUser()).collection(TABLES_COLECCTION)
             .document(table.name).collection(TASKS_COLECCTION)
@@ -84,7 +98,6 @@ object FirebaseFirestore {
                 /** If the result has been successful... **/
                 if (it.isSuccessful) {
                     app.showAlert("Info", "Tabla creada correctamente")
-                    forceBack(app)
                 } else
                     app.showAlert("Error", "No se ha podido crear la tabla")
         }

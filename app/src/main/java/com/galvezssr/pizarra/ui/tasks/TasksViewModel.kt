@@ -26,7 +26,7 @@ class TasksViewModel(private val tableName: String): ViewModel() {
 
         viewModelScope.launch {
             _progressBar.postValue(true)
-            _tasksList.postValue(FirebaseFirestore.getTasksFromTable( Table(tableName) ))
+            _tasksList.postValue(FirebaseFirestore.getTasksFromTableFlow( Table(tableName) ))
             _progressBar.postValue(false)
         }
 

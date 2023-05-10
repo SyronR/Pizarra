@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
 
     android:id="@+id/login_view"
     android:layout_width="match_parent"
@@ -90,21 +89,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/botonAcceder" />
 
-    <Button
-        android:id="@+id/botonGoogle"
-        android:layout_width="300dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="12dp"
-        android:backgroundTint="@color/light_white"
-        android:contentDescription="@string/google"
-        android:drawableLeft="@drawable/buscar"
-        android:text="@string/google"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/botonRegistrar"
-        tools:ignore="RtlHardcoded" />
+<!--    <Button-->
+<!--        android:id="@+id/botonGoogle"-->
+<!--        android:layout_width="300dp"-->
+<!--        android:layout_height="55dp"-->
+<!--        android:layout_marginTop="12dp"-->
+<!--        android:backgroundTint="@color/light_white"-->
+<!--        android:contentDescription="@string/google"-->
+<!--        android:drawableLeft="@drawable/buscar"-->
+<!--        android:text="@string/google"-->
+<!--        android:textColor="@color/black"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.495"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/botonRegistrar"/>-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

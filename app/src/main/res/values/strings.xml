@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Pizarra</string>
-    <string name="login_start">Ingrese su correo electrónico y contraseña</string>
+    <string name="login_start">Ingrese sus credenciales de cuenta</string>
     <string name="email">Correo electrónico:</string>
     <string name="password">Contraseña:</string>
     <string name="access">Acceder</string>
@@ -13,7 +13,7 @@
     <string name="user_phone">Número de Telefono:</string>
     <string name="repet_password">Repetir Contraseña:</string>
     <string name="todo">TODO</string>
-    <string name="create_table_string">Añade un nombre para identificar la tabla</string>
+    <string name="create_table_string">Añada un nombre para la tabla</string>
     <string name="name">Nombre:</string>
     <string name="detail_name">- NOMBRE:</string>
     <string name="create_table">Crear tabla</string>
@@ -40,4 +40,8 @@
     <string name="edit_task">Inserte los nuevos datos</string>
     <string name="save">Guardar</string>
     <string name="cancel">Cancelar</string>
+    <string name="first_table">No hay tablas, cree su primera tabla</string>
+    <string name="log_off">Cerrar Sesión</string>
+    <string name="show_extra">Mostrar Acerca</string>
+    <string name="example_create_table">- Ejemplo: Tareas</string>
 </resources>

@@ -38,7 +38,7 @@ class TasksFragment: Fragment(R.layout.tasks_view) {
     // FUNCTIONS ///////////////////////////////////////
     ////////////////////////////////////////////////////
 
-    @SuppressLint("NotifyDataSetChanged")
+    @SuppressLint("NotifyDataSetChanged", "SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -50,6 +50,10 @@ class TasksFragment: Fragment(R.layout.tasks_view) {
 
         adapter = TasksAdapter { task -> navigateToDetailTaskActivity(task) }
         binding.tasksRecycler.adapter = adapter
+
+        // Creating the new toolbar
+        binding.toolbar.title = tableName
+        app.setSupportActionBar(binding.toolbar)
 
         /** Set the listener for the button **/
         binding.floatingActionButton.setOnClickListener {
@@ -76,6 +80,12 @@ class TasksFragment: Fragment(R.layout.tasks_view) {
                     viewModel.tasksList.value!!.collect {
                         adapter.tasks = it
                         adapter.notifyDataSetChanged()
+
+                        if (it.isEmpty()) {
+                            binding.emptyTextView.text = "No hay tareas, cree su primera tarea"
+                        } else {
+                            binding.emptyTextView.text = ""
+                        }
                     }
 
                 }

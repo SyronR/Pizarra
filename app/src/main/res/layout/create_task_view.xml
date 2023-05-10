@@ -31,6 +31,7 @@
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/name"
+        android:gravity="top|start"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textColor="@color/white"

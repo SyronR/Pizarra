@@ -33,7 +33,7 @@ class TablesViewModel: ViewModel() {
         viewModelScope.launch {
 
             _progressBar.postValue(true)
-            _tablesList.postValue(FirebaseFirestore.getTables())
+            _tablesList.postValue(FirebaseFirestore.getTablesFlow())
             _progressBar.postValue(false)
         }
 
