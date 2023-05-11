@@ -44,4 +44,6 @@
     <string name="log_off">Cerrar Sesión</string>
     <string name="show_extra">Mostrar Acerca</string>
     <string name="example_create_table">- Ejemplo: Tareas</string>
+    <string name="change_task_from_table">Cambiar de tabla</string>
+    <string name="change_task_from_table_string">Eliga a que tabla desea mover su tarea</string>
 </resources>

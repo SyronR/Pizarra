@@ -31,21 +31,6 @@ object FirebaseFirestore {
 
     private fun getCurrentUser(): String = Firebase.auth.currentUser?.email!!
 
-//    /** Get all tables from the current user **/
-//    fun getTables(): List<Table> {
-//        val tableList = mutableListOf<Table>()
-//
-//        FirebaseFirestore.getInstance().collection(USER_COLECCTION).document(getCurrentUser()).collection(
-//            TABLES_COLECCTION).get().addOnSuccessListener {
-//                for (document in it) {
-//                    val table = document.toObject(Table::class.java)
-//                    tableList.add(table)
-//                }
-//        }
-//
-//        return tableList
-//    }
-
     fun getTablesFlow(): Flow<List<Table>> {
         return FirebaseFirestore.getInstance().collection(USER_COLECCTION)
             .document(getCurrentUser()).collection(TABLES_COLECCTION)
@@ -146,6 +131,30 @@ object FirebaseFirestore {
             } else
                 app.showAlert("Error", "No se ha podido modificar la tarea")
 
+        }
+    }
+
+    fun changeTaskFromTrable(task: Task, sourceTable: Table, destinationTable: Table, app: AppCompatActivity) {
+        val ddbb = getDDBB()
+        val currentUser = getCurrentUser()
+        val taskMap = hashMapOf(
+            "name" to task.name,
+            "description" to task.description,
+            "priority" to task.priority,
+            "date" to task.date
+        )
+
+        ddbb.collection(USER_COLECCTION).document(currentUser).collection(TABLES_COLECCTION).document(sourceTable.name).collection(
+            TASKS_COLECCTION).document(task.name).delete()
+
+        ddbb.collection(USER_COLECCTION).document(currentUser).collection(TABLES_COLECCTION).document(destinationTable.name).collection(
+            TASKS_COLECCTION).document(task.name).set(taskMap).addOnCompleteListener {
+
+                if (it.isSuccessful)
+                    app.showAlert("Info", "Tarea cambiada de tabla correctamente")
+
+                else
+                    app.showAlert("Error", "Se ha producido un error inesperado")
         }
     }
 

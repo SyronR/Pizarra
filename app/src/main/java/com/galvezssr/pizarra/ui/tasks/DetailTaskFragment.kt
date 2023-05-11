@@ -15,7 +15,6 @@ import androidx.navigation.fragment.findNavController
 import com.galvezssr.pizarra.R
 import com.galvezssr.pizarra.databinding.DetailTaskViewBinding
 import com.galvezssr.pizarra.kernel.Task
-import com.galvezssr.pizarra.kernel.showAlert
 
 class DetailTaskFragment: Fragment(R.layout.detail_task_view) {
 
@@ -94,7 +93,7 @@ class DetailTaskFragment: Fragment(R.layout.detail_task_view) {
 
         when (item.itemId) {
             R.id.action_move -> {
-                app.showAlert("Info", "Disponible proximamente")
+                navigateToChangeTaskDialog()
                 return true
             }
             R.id.action_modify -> {
@@ -104,6 +103,21 @@ class DetailTaskFragment: Fragment(R.layout.detail_task_view) {
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun navigateToChangeTaskDialog() {
+        val bundle = Bundle()
+        val dialog = ChangeTaskDialog()
+
+        bundle.apply {
+            putString("tableName", tableName)
+            putString("taskName", task.name)
+            putString("taskDescription", task.description)
+            putString("taskPriority", task.priority)
+            putString("taskDate", task.date)
+        }
+        dialog.arguments = bundle
+        dialog.show(app.supportFragmentManager, "change_task_view")
     }
 
     private fun navigateToEditTaskFragment() {

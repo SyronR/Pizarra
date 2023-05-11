@@ -47,7 +47,7 @@ class TablesAdapter(val listener: (Table) -> Unit): RecyclerView.Adapter<TablesA
         holder.button.setOnClickListener {
             val alertDialogBuilder = AlertDialog.Builder(holder.itemView.context)
 
-            alertDialogBuilder.setMessage("¿Desea eliminar este elemento? Esta acción no se puede deshacer")
+            alertDialogBuilder.setMessage("¿Desea eliminar este elemento?")
             alertDialogBuilder.setPositiveButton("Sí") { _, _ ->
                 FirebaseFirestore.deleteTable(table, holder.view)
             }
