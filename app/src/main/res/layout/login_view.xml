@@ -68,7 +68,7 @@
         android:id="@+id/botonAcceder"
         android:layout_width="300dp"
         android:layout_height="55dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="64dp"
         android:backgroundTint="@color/light_gray"
         android:text="@string/access"
         android:textColor="@color/black"

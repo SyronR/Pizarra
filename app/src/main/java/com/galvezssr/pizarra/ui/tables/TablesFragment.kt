@@ -13,6 +13,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import com.galvezssr.pizarra.R
 import com.galvezssr.pizarra.TasksActivity
 import com.galvezssr.pizarra.databinding.TablesViewBinding
@@ -110,12 +111,18 @@ class TablesFragment: Fragment(R.layout.tables_view) {
                 return true
             }
             R.id.extra -> {
-                app.showAlert("Info", "Disponible proximamente")
+                navigateToExtraActivity()
                 return true
             }
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun navigateToExtraActivity() {
+        findNavController().navigate(
+            R.id.action_tablesFragment_to_extraFragment
+        )
     }
 
     private fun navigateToCreateTableFragment() {

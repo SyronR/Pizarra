@@ -23,7 +23,6 @@ class DetailTaskFragment: Fragment(R.layout.detail_task_view) {
     ////////////////////////////////////////////////////
 
     private lateinit var tableName: String
-
     private lateinit var task: Task
 
     private lateinit var binding: DetailTaskViewBinding

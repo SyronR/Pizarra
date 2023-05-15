@@ -46,4 +46,8 @@
     <string name="example_create_table">- Ejemplo: Tareas</string>
     <string name="change_task_from_table">Cambiar de tabla</string>
     <string name="change_task_from_table_string">Eliga a que tabla desea mover su tarea</string>
+    <string name="extra_field_1">- NOMBRE DEL DESARROLLADOR</string>
+    <string name="extra_field_2">- VERSIÓN DE LA APLICACIÓN</string>
+    <string name="extra_field_3">- LENGUAJE DE LA APLICACIÓN</string>
+    <string name="extra_field_4">- TECNOLOGIA APLICADA</string>
 </resources>

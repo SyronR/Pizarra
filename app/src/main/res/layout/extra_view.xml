@@ -3,8 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/detail_task_view"
+    android:id="@+id/extra_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/pizarra2">
@@ -27,7 +26,7 @@
         android:layout_marginStart="36dp"
         android:layout_marginTop="90dp"
         android:gravity="center"
-        android:text="@string/detail_name"
+        android:text="@string/extra_field_1"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textSize="18sp"
@@ -42,15 +41,16 @@
         android:layout_marginTop="8dp"
         android:autofillHints=""
         android:ems="10"
+        android:focusable="false"
         android:hint="@string/name"
         android:inputType="text"
         android:minHeight="48dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        android:focusable="false" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
         android:id="@+id/textView2"
@@ -59,7 +59,7 @@
         android:layout_marginStart="36dp"
         android:layout_marginTop="32dp"
         android:gravity="center"
-        android:text="@string/detail_description"
+        android:text="@string/extra_field_2"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textSize="18sp"
@@ -70,13 +70,12 @@
     <EditText
         android:id="@+id/fieldDescription"
         android:layout_width="300dp"
-        android:layout_height="120dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/description"
-        android:inputType="textMultiLine"
-        android:gravity="start|top"
+        android:inputType="text"
         android:minHeight="48dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
@@ -92,7 +91,7 @@
         android:layout_marginStart="36dp"
         android:layout_marginTop="32dp"
         android:gravity="center"
-        android:text="@string/detail_priority"
+        android:text="@string/extra_field_3"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textSize="18sp"
@@ -101,7 +100,7 @@
         app:layout_constraintTop_toBottomOf="@+id/fieldDescription" />
 
     <EditText
-        android:id="@+id/fieldPriority"
+        android:id="@+id/fieldLanguage"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -125,30 +124,30 @@
         android:layout_marginStart="36dp"
         android:layout_marginTop="32dp"
         android:gravity="center"
-        android:text="@string/detail_date"
+        android:text="@string/extra_field_4"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fieldPriority" />
+        app:layout_constraintTop_toBottomOf="@+id/fieldLanguage" />
 
     <EditText
-        android:id="@+id/fieldDate"
+        android:id="@+id/fieldTechnology"
         android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        android:layout_height="150dp"
         android:layout_marginTop="8dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/select_date"
-        android:inputType="text"
         android:minHeight="48dp"
+        android:inputType="textMultiLine"
+        android:gravity="start|top"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
-        android:focusable="false"
-        tools:ignore="TextFields" />
+        android:focusable="false"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
