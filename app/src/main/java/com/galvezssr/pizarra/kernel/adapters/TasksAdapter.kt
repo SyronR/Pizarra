@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.galvezssr.pizarra.R
-import com.galvezssr.pizarra.kernel.Task
+import com.galvezssr.pizarra.kernel.objects.Task
 
 class TasksAdapter(val listener: (Task) -> Unit): RecyclerView.Adapter<TasksAdapter.ViewHolder>() {
 

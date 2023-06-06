@@ -2,6 +2,7 @@ package com.galvezssr.pizarra.ui.login
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.View
@@ -21,6 +22,8 @@ class LoginFragment: Fragment(R.layout.login_view) {
     ////////////////////////////////////////////////////
     // VARIABLES ///////////////////////////////////////
     ////////////////////////////////////////////////////
+
+    private lateinit var prefs: SharedPreferences
 
     private lateinit var email: String
     private lateinit var password: String
@@ -59,6 +62,26 @@ class LoginFragment: Fragment(R.layout.login_view) {
             navigateToRegisterFragment()
         }
 
+
+        /** Check for cache session data **/
+        checkSession()
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        binding.loginView.visibility = View.VISIBLE
+    }
+
+    private fun checkSession() {
+        prefs = app.getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE)
+        val prefsEmail = prefs.getString("email", null)
+
+        // If session data exists, then the TablesFragment starts without make the login
+        if (prefsEmail != null) {
+            binding.loginView.visibility = View.INVISIBLE
+            navigateToTablesActivity(prefsEmail)
+        }
     }
 
     @Suppress("DEPRECATION")
@@ -81,7 +104,7 @@ class LoginFragment: Fragment(R.layout.login_view) {
 
                 /** If the result has been successful... **/
                 if (it.isSuccessful)
-                    navigateToTablesActivity()
+                    navigateToTablesActivity(email)
                 else
                     app.showAlert("Error", "No se ha podido iniciar sesión")
             }
@@ -100,8 +123,10 @@ class LoginFragment: Fragment(R.layout.login_view) {
         )
     }
 
-    private fun navigateToTablesActivity() {
-        val intent = Intent(app, TablesActivity::class.java).apply {}
+    private fun navigateToTablesActivity(email: String) {
+        val intent = Intent(app, TablesActivity::class.java).apply {
+            putExtra("email", email)
+        }
 
         startActivity(intent)
     }

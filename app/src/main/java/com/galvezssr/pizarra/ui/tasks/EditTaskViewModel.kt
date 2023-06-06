@@ -1,7 +1,7 @@
 package com.galvezssr.pizarra.ui.tasks
 
 import androidx.lifecycle.*
-import com.galvezssr.pizarra.kernel.Task
+import com.galvezssr.pizarra.kernel.objects.Task
 import kotlinx.coroutines.launch
 
 class EditTaskViewModel(private val task: Task): ViewModel() {

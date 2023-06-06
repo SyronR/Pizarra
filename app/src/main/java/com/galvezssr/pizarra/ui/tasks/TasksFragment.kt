@@ -17,8 +17,8 @@ import com.galvezssr.pizarra.DetailTaskActivity
 import com.galvezssr.pizarra.R
 import com.galvezssr.pizarra.databinding.TasksViewBinding
 import com.galvezssr.pizarra.kernel.FirebaseFirestore
-import com.galvezssr.pizarra.kernel.Table
-import com.galvezssr.pizarra.kernel.Task
+import com.galvezssr.pizarra.kernel.objects.Table
+import com.galvezssr.pizarra.kernel.objects.Task
 import com.galvezssr.pizarra.kernel.adapters.TasksAdapter
 import kotlinx.coroutines.launch
 

@@ -32,9 +32,10 @@ class ExtraFragment: Fragment(R.layout.extra_view) {
         /** Set the values in the XML **/
         binding.fieldName.setText("Alberto Gálvez (Syron)")
         binding.fieldDescription.setText("1.0 (Semillas)")
-        binding.fieldLanguage.setText("Kotlin / XML + Firebase")
+        binding.fieldLanguage.setText("Kotlin + XML // Firebase")
         binding.fieldTechnology.setText(
-            "Activitys + Fragments // Librería Navigation // DialogFragment // RecyclerView + Flow + SwipeToDelete // Spinners // Menu 3 puntos // RadioButtons // DatePicker // Firestore"
+            "Activitys + Fragments // Librería Navigation // DialogFragment // RecyclerView + Flow + SwipeToDelete // Spinners // Menu 3 puntos // RadioButtons // DatePicker // Firestore // Notificaciones Push"
         )
+
     }
 }

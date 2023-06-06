@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.galvezssr.pizarra.kernel.FirebaseFirestore
-import com.galvezssr.pizarra.kernel.Table
+import com.galvezssr.pizarra.kernel.objects.Table
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 

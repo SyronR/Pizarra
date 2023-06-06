@@ -1,4 +1,4 @@
-package com.galvezssr.pizarra.kernel
+package com.galvezssr.pizarra.kernel.objects
 
 class Table(
     val name: String

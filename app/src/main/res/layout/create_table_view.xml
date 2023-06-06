@@ -26,6 +26,7 @@
         android:background="@drawable/edittext_background"
         android:hint="@string/example_create_table"
         android:minHeight="48dp"
+        android:maxLength="20"
         android:textColor="@android:color/black"
         android:textColorHint="@color/light_gray"
         android:autofillHints=""

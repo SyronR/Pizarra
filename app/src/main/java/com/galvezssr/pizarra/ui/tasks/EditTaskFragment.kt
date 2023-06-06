@@ -1,5 +1,6 @@
 package com.galvezssr.pizarra.ui.tasks
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -8,8 +9,8 @@ import androidx.fragment.app.viewModels
 import com.galvezssr.pizarra.R
 import com.galvezssr.pizarra.databinding.EditTaskViewBinding
 import com.galvezssr.pizarra.kernel.FirebaseFirestore
-import com.galvezssr.pizarra.kernel.Table
-import com.galvezssr.pizarra.kernel.Task
+import com.galvezssr.pizarra.kernel.objects.Table
+import com.galvezssr.pizarra.kernel.objects.Task
 
 @Suppress("DEPRECATION")
 class EditTaskFragment: Fragment(R.layout.edit_task_view) {
@@ -34,6 +35,7 @@ class EditTaskFragment: Fragment(R.layout.edit_task_view) {
     // FUNCTIONS ///////////////////////////////////////
     ////////////////////////////////////////////////////
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -66,7 +68,10 @@ class EditTaskFragment: Fragment(R.layout.edit_task_view) {
                 else -> binding.radioButtonLow.isChecked = true
             }
 
-            binding.fieldDate.setText(it.date)
+            if (it.date != "null")
+                binding.fieldDate.setText(it.date)
+            else
+                binding.fieldDate.setText("Sin fecha limite")
 
             priority = it.priority
             date = it.date

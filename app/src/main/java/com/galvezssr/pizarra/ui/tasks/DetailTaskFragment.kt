@@ -14,7 +14,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.galvezssr.pizarra.R
 import com.galvezssr.pizarra.databinding.DetailTaskViewBinding
-import com.galvezssr.pizarra.kernel.Task
+import com.galvezssr.pizarra.kernel.objects.Task
 
 class DetailTaskFragment: Fragment(R.layout.detail_task_view) {
 
@@ -74,7 +74,10 @@ class DetailTaskFragment: Fragment(R.layout.detail_task_view) {
                 else -> binding.fieldPriority.setText("Baja")
             }
 
-            binding.fieldDate.setText(it.date)
+            if (it.date != "null")
+                binding.fieldDate.setText(it.date)
+            else
+                binding.fieldDate.setText("Sin fecha limite")
         }
 
     }

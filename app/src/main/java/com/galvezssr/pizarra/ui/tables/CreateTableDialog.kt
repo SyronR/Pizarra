@@ -4,17 +4,22 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.lifecycleScope
 import com.galvezssr.pizarra.R
 import com.galvezssr.pizarra.databinding.CreateTableViewBinding
 import com.galvezssr.pizarra.kernel.FirebaseFirestore
-import com.galvezssr.pizarra.kernel.Table
+import com.galvezssr.pizarra.kernel.objects.Table
 import com.galvezssr.pizarra.kernel.showAlert
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.launch
 
 class CreateTableDialog: DialogFragment(R.layout.create_table_view) {
 
     ////////////////////////////////////////////////////
     // VARIABLES ///////////////////////////////////////
     ////////////////////////////////////////////////////
+
+    private lateinit var tables: Flow<List<Table>>
 
     private lateinit var binding: CreateTableViewBinding
     private lateinit var app: AppCompatActivity
@@ -29,18 +34,25 @@ class CreateTableDialog: DialogFragment(R.layout.create_table_view) {
         /** Initialize the variables **/
         binding = CreateTableViewBinding.bind(view)
         app = (requireActivity() as AppCompatActivity)
+        tables = FirebaseFirestore.getTablesFlow()
 
         /** Set the listener for the button **/
         binding.buttomCreate.setOnClickListener {
             if (binding.textName.text.isNotEmpty()) {
 
-//                if (!checkEqualTables(binding.textName.text.toString()))
-//                    FirebaseFirestore.createTable( Table(binding.textName.text.toString()), app )
-//
-//                else
-//                    app.showAlert("Error", "Ya hay una tabla con el mismo nombre")
+                lifecycleScope.launch {
+                    tables.collect {
 
-                FirebaseFirestore.createTable( Table(binding.textName.text.toString()), app )
+                        /** If not contains the ownTable, this code will create the table **/
+                        if (!it.contains( Table(binding.textName.text.toString()) )) {
+                            FirebaseFirestore.createTable( Table(binding.textName.text.toString()), app )
+
+                        } else {
+                            app.showAlert("Error", "Ya existe una tabla con el mismo nombre")
+
+                        }
+                    }
+                }
 
                 /** This function close the Dialog when the button 'buttomCreate' is pressed **/
                 dismiss()
@@ -49,16 +61,4 @@ class CreateTableDialog: DialogFragment(R.layout.create_table_view) {
             }
         }
     }
-
-//    /** Returns false if there are no tables with the same name **/
-//    private fun checkEqualTables(tableName: String): Boolean {
-//        val tables = FirebaseFirestore.getTables()
-//
-//        for (table in tables) {
-//            if (tableName == table.name)
-//                return true
-//        }
-//
-//        return false
-//    }
 }

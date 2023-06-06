@@ -3,6 +3,9 @@ package com.galvezssr.pizarra.kernel
 
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.galvezssr.pizarra.kernel.objects.Table
+import com.galvezssr.pizarra.kernel.objects.Task
+import com.galvezssr.pizarra.kernel.objects.User
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore

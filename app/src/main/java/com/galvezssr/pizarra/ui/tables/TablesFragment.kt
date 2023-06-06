@@ -1,7 +1,9 @@
 package com.galvezssr.pizarra.ui.tables
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
@@ -17,10 +19,11 @@ import androidx.navigation.fragment.findNavController
 import com.galvezssr.pizarra.R
 import com.galvezssr.pizarra.TasksActivity
 import com.galvezssr.pizarra.databinding.TablesViewBinding
-import com.galvezssr.pizarra.kernel.Table
+import com.galvezssr.pizarra.kernel.objects.Table
 import com.galvezssr.pizarra.kernel.adapters.TablesAdapter
-import com.galvezssr.pizarra.kernel.showAlert
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
+import java.util.*
 
 @Suppress("DEPRECATION")
 class TablesFragment: Fragment(R.layout.tables_view) {
@@ -28,6 +31,9 @@ class TablesFragment: Fragment(R.layout.tables_view) {
     ////////////////////////////////////////////////////
     // VARIABLES ///////////////////////////////////////
     ////////////////////////////////////////////////////
+
+    private lateinit var email: String
+    private lateinit var prefs: SharedPreferences.Editor
 
     private lateinit var adapter: TablesAdapter
 
@@ -45,13 +51,14 @@ class TablesFragment: Fragment(R.layout.tables_view) {
         /** Initialize the variables **/
         binding = TablesViewBinding.bind(view)
         app = (requireActivity() as AppCompatActivity)
+        email = app.intent.extras!!.getString("email").toString()
         val viewModel: TablesViewModel by viewModels()
 
         adapter = TablesAdapter { table -> navigateToTasksActivity(table) }
         binding.tableRecycler.adapter = adapter
 
         // Creating the new toolbar with the three points menu and title
-        binding.toolbar.title = "Tablas"
+        binding.toolbar.title = email
         app.setSupportActionBar(binding.toolbar)
         setHasOptionsMenu(true)
 
@@ -92,6 +99,12 @@ class TablesFragment: Fragment(R.layout.tables_view) {
             }
 
         }
+
+        /** Set the cache session data **/
+        prefs = app.getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
+        prefs.putString("email", email)
+        prefs.apply()
+
     }
 
     /** Use this methods to inflate a menu. This one creates the menu taking the menu of res/menu/main_menu **/
@@ -107,7 +120,7 @@ class TablesFragment: Fragment(R.layout.tables_view) {
 
         when (item.itemId) {
             R.id.logoff -> {
-                app.showAlert("Info", "Disponible proximamente")
+                signOut()
                 return true
             }
             R.id.extra -> {
@@ -117,6 +130,16 @@ class TablesFragment: Fragment(R.layout.tables_view) {
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun signOut() {
+
+        // Delete the cache session data
+        prefs.clear()
+        prefs.apply()
+
+        FirebaseAuth.getInstance().signOut()
+        app.onBackPressed()
     }
 
     private fun navigateToExtraActivity() {

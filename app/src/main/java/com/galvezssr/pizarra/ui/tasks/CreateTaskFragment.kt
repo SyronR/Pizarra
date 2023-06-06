@@ -7,6 +7,9 @@ import androidx.fragment.app.Fragment
 import com.galvezssr.pizarra.R
 import com.galvezssr.pizarra.databinding.CreateTaskViewBinding
 import com.galvezssr.pizarra.kernel.*
+import com.galvezssr.pizarra.kernel.objects.Table
+import com.galvezssr.pizarra.kernel.objects.Task
+import kotlinx.coroutines.flow.Flow
 
 class CreateTaskFragment: Fragment(R.layout.create_task_view) {
 
@@ -22,6 +25,8 @@ class CreateTaskFragment: Fragment(R.layout.create_task_view) {
     private lateinit var datePicker: DatePickerFragment
     private lateinit var tableName: String
 
+    private lateinit var tasks: Flow<List<Task>>
+
     private lateinit var binding: CreateTaskViewBinding
     private lateinit var app: AppCompatActivity
 
@@ -36,6 +41,8 @@ class CreateTaskFragment: Fragment(R.layout.create_task_view) {
         binding = CreateTaskViewBinding.bind(view)
         app = (requireActivity() as AppCompatActivity)
         tableName = app.intent.extras!!.getString("tableName").toString()
+        table = Table(tableName)
+        tasks = FirebaseFirestore.getTasksFromTableFlow( table )
 
         /** Set the listener for the radio buttons **/
         binding.radioGroup.setOnCheckedChangeListener { _, checkedId ->
@@ -62,9 +69,22 @@ class CreateTaskFragment: Fragment(R.layout.create_task_view) {
 
             if (binding.fieldName.text.isNotEmpty()) {
                 task = Task(binding.fieldName.text.toString(), binding.fieldDescription.text.toString(), priority, date)
-                table = Table(tableName)
 
                 FirebaseFirestore.createTask(task, table, app)
+
+//                lifecycleScope.launch {
+//                    tasks.collect {
+//
+//                        /** If not contains the ownTask, this code will create the task **/
+//                        if (!it.contains( task )) {
+//                            FirebaseFirestore.createTask(task, table, app)
+//
+//                        } else {
+//                            app.showAlert("Error", "Ya existe una tarea con el mismo nombre")
+//
+//                        }
+//                    }
+//                }
 
             } else
                 view.showSnackBar("Una tarea no puede no tener nombre")

@@ -1,4 +1,4 @@
-package com.galvezssr.pizarra.kernel
+package com.galvezssr.pizarra.kernel.objects
 
 data class User(
     val name: String,

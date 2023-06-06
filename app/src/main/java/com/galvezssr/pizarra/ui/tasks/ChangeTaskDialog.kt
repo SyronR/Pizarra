@@ -10,6 +10,8 @@ import androidx.lifecycle.lifecycleScope
 import com.galvezssr.pizarra.R
 import com.galvezssr.pizarra.databinding.ChangeTaskViewBinding
 import com.galvezssr.pizarra.kernel.*
+import com.galvezssr.pizarra.kernel.objects.Table
+import com.galvezssr.pizarra.kernel.objects.Task
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 

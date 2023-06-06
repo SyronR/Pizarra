@@ -9,7 +9,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.galvezssr.pizarra.R
 import com.galvezssr.pizarra.kernel.FirebaseFirestore
-import com.galvezssr.pizarra.kernel.Table
+import com.galvezssr.pizarra.kernel.objects.Table
 import com.galvezssr.pizarra.kernel.showSnackBar
 
 class TablesAdapter(val listener: (Table) -> Unit): RecyclerView.Adapter<TablesAdapter.ViewHolder>() {

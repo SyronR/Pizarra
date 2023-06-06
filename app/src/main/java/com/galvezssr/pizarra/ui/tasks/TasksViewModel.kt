@@ -2,8 +2,8 @@ package com.galvezssr.pizarra.ui.tasks
 
 import androidx.lifecycle.*
 import com.galvezssr.pizarra.kernel.FirebaseFirestore
-import com.galvezssr.pizarra.kernel.Table
-import com.galvezssr.pizarra.kernel.Task
+import com.galvezssr.pizarra.kernel.objects.Table
+import com.galvezssr.pizarra.kernel.objects.Task
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 

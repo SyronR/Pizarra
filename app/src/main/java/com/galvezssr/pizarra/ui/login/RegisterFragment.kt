@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import com.galvezssr.pizarra.R
 import com.galvezssr.pizarra.databinding.RegisterViewBinding
 import com.galvezssr.pizarra.kernel.*
+import com.galvezssr.pizarra.kernel.objects.User
 import com.google.firebase.auth.FirebaseAuth
 
 class RegisterFragment: Fragment(R.layout.register_view) {
