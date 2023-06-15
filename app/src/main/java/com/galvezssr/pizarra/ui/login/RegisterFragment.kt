@@ -60,22 +60,29 @@ class RegisterFragment: Fragment(R.layout.register_view) {
 
             user = User(name, phone, email, password)
 
-            /** If the 2 passwords are the same, then... **/
-            if (password == repetedPassword) {
+            /** Check if the email is valid **/
+            if (email.contains('@') && email.endsWith(".com") || email.endsWith(".es")) {
 
-                auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
+                /** If the 2 passwords are the same, then... **/
+                if (password == repetedPassword) {
 
-                    /** If the result has been successful... **/
-                    if (it.isSuccessful) {
-                        FirebaseFirestore.createUser(user, app)
+                    auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
 
-                    } else {
-                        app.showAlert("Error", "Ya existe un usuario con el mismo email")
+                        /** If the result has been successful... **/
+                        if (it.isSuccessful) {
+                            FirebaseFirestore.createUser(user, app)
+
+                        } else {
+                            app.showAlert("Error", "Se ha producido un error al crear la cuenta")
+                        }
                     }
-                }
 
-            } else
-                view.showSnackBar("Las contraseñas son diferentes, intentalo de nuevo")
+                } else
+                    view.showSnackBar("Las contraseñas son diferentes, intentalo de nuevo")
+
+            } else {
+                view.showSnackBar("El email no es valido")
+            }
 
         } else
             view.showEmptySnackBar()
